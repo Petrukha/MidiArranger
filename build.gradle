@@ -1,13 +1,31 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE")
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    
     testCompile 'org.testng:testng:6.10'
     testCompile "org.mockito:mockito-core:2.19.0"
+}
+
+bootJar {
+    baseName = 'midi-arranger'
+    version =  '0.1.0'
 }
 
 test {
